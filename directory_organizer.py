@@ -5,12 +5,12 @@ Created on Thu May 25 12:22:51 2017
 Author: Sam Poff, spoff42@gmail.com
 
 
-The purpose of this program is to iterate over the files in a 'Downloads' folder,
+The purpose of this program is to iterate over the files in a directory,
 categorize all of the files by date, then create, and place those files in, folders
 according to their date.
 
 
-If working correctly the downloads directory on the computer will be a list of
+If working correctly the directory on the computer will be a list of
 folders with 'Month_Year' names, filled with all the files either downloaded 
 or last altered within that month-year period.
 
@@ -36,7 +36,10 @@ Error:
     download something, run the program so it gets put away, then download that
     same file and try to run the program again, it will crash.
 
+<<<<<<< HEAD
    
+=======
+>>>>>>> gui
 """
 
 
@@ -215,7 +218,7 @@ def change_dir( path, new_suffix ):
     
     downloads   = 'Downloads'
     start_index = 0
-    
+
     # Finds the beginning of the portion of the path we want to change.
     for i in range( len( path ) ):
         if path[ i : i + 9 ] == downloads:
@@ -492,103 +495,108 @@ def move_files( file_paths, path ):
                 index = j + 6
             elif name[ j : j + 9  ] == 'Pictures\\' :
                 index = j + 9
-            elif name[ j : j + 6  ] == 'Video\\'    :
-                index = j + 6
-            
-
-#==============================================================================
-#         """
-#         Working solution 
-#         """
-#         if   month_year[i][0:3] == 'Jan':
-#             try:
-#                 os.rename( file_paths[i], path + 'Jan_' + month_year[i][4:] + '\\' + name[index :] )
-#             except FileExistsError:
-#                 # Want to make a window open and ask if they want to re-save with 
-#                 # a changed name, skip, or delete.
-#==============================================================================
-
-
+            elif name[ j : j + 7  ] == 'Videos\\'    :
+                index = j + 7
 
         # Different case for every month.
         # Jan
         if   month_year[i][0:3] == 'Jan':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Jan_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Jan_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Jan_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Feb        
         elif month_year[i][0:3] == 'Feb':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Feb_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Feb_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Feb_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Mar        
         elif month_year[i][0:3] == 'Mar':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Mar_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Mar_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Mar_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Apr        
         elif month_year[i][0:3] == 'Apr':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Apr_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Apr_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Apr_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # May        
         elif month_year[i][0:3] == 'May':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'May_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'May_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'May_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Jun
         elif month_year[i][0:3] == 'Jun':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Jun_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Jun_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Jun_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Jul
         elif month_year[i][0:3] == 'Jul':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Jul_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Jul_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Jul_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Aug
         elif month_year[i][0:3] == 'Aug':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Aug_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Aug_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Aug_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Sep
         elif month_year[i][0:3] == 'Sep':
-            if   month_year[i][4:] == '2016':
-                try:
-                    os.rename( file_paths[i], path + 'Sep_2016\\' + name[index :] )
-                except FileExistsError:
-                    os.rename( file_paths[i], path + 'Sep_2016\\' + 'copy_' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Sep_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Sep_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Oct
         elif month_year[i][0:3] == 'Oct':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Oct_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Oct_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Oct_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Nov
         elif month_year[i][0:3] == 'Nov':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Nov_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Nov_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Nov_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Dec
         elif month_year[i][0:3] == 'Dec':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Dec_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Dec_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Dec_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         else: print('Boned in move_files')
         
-    
     return None
 
 
@@ -678,21 +686,21 @@ class StartPage( tk.Frame ):
     def __init__( self, parent, controller ):
         tk.Frame.__init__( self,parent )
         
-        tk.Label( self, text = "Directory Cleaner", font=LARGE_FONT ).grid( 
-                  padx = 75 )
+        tk.Label( self, text = "Directory Cleaner", font=LARGE_FONT ).grid( row = 1, padx = 64, pady = 30)
+
 
         # Clean a directory button.
         button = ttk.Button(self                       , 
                             text="Clean a Directory"   ,
                             command = lambda: controller.show_frame( Cleaner_Page ) )
-        button.grid( sticky = 's' )
+        button.grid( row = 5, pady = 3, sticky = 's' )
         button.config( width = 20 )
 
         # View documentation button.
         button2 = ttk.Button(self                      , 
                              text="View Documentation" ,
                              command = lambda: controller.show_frame( Documentation ) )
-        button2.grid( sticky = 's' )
+        button2.grid( row = 6, pady = 3, sticky = 's' )
         button2.config( width = 20 )
 
 
@@ -782,21 +790,35 @@ class Cleaner_Page(tk.Frame):
 
 
 
-
+"""
+Will be the documentation page.
+"""
 class Documentation(tk.Frame):
 
     def __init__( self, parent, controller ):
+        
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Page Two!!!", font=LARGE_FONT)
-        label.pack(pady=10,padx=10)
+        tk.Label(self, text="The purpose of this program is to iterate over the" ).grid( 
+                 row = 1      , 
+                 sticky = 'w' )
+        tk.Label(self, text="files in a directory and place them into folders"   ).grid( 
+                 row = 2      , 
+                 sticky = 'w' )
+        tk.Label(self, text="depending on when they were first downloaded or"    ).grid( 
+                 row = 3      , 
+                 sticky = 'w' )
+        tk.Label(self, text="last altered."                                      ).grid( 
+                 row = 4      , 
+                 sticky = 'w' )
 
-        button1 = tk.Button( self, text="Back to Home",
+
+        button1 = ttk.Button( self, text="Back",
                             command=lambda: controller.show_frame( StartPage ) )
-        button1.pack()
+        button1.grid( pady = 3 )
 
-        button2 = tk.Button( self, text="Page One",
+        button2 = ttk.Button( self, text="To Cleaner",
                             command=lambda: controller.show_frame( Cleaner_Page ) )
-        button2.pack()
+        button2.grid( pady = 3 )
         
 
 
@@ -805,7 +827,9 @@ class Documentation(tk.Frame):
 
 
 
-
+"""
+Init main loop 
+"""
 if __name__ == "__main__":
     app = Dung_Beetle()
     app.mainloop()
