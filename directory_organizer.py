@@ -417,24 +417,6 @@ def move_files( file_paths, path ):
                 index = j + 9
             elif name[ j : j + 7  ] == 'Videos\\'    :
                 index = j + 7
-<<<<<<< HEAD
-=======
-            
-
-#==============================================================================
-#         """
-#         Working solution 
-#         """
-#         if   month_year[i][0:3] == 'Jan':
-#             try:
-#                 os.rename( file_paths[i], path + 'Jan_' + month_year[i][4:] + '\\' + name[index :] )
-#             except FileExistsError:
-#                 # Want to make a window open and ask if they want to re-save with 
-#                 # a changed name, skip, or delete.
-#==============================================================================
-
-
->>>>>>> processes
 
         # Different case for every month.
         # Jan
