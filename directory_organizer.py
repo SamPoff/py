@@ -5,12 +5,12 @@ Created on Thu May 25 12:22:51 2017
 Author: Sam Poff, spoff42@gmail.com
 
 
-The purpose of this program is to iterate over the files in a 'Downloads' folder,
+The purpose of this program is to iterate over the files in a directory,
 categorize all of the files by date, then create, and place those files in, folders
 according to their date.
 
 
-If working correctly the downloads directory on the computer will be a list of
+If working correctly the directory on the computer will be a list of
 folders with 'Month_Year' names, filled with all the files either downloaded 
 or last altered within that month-year period.
 
@@ -36,7 +36,6 @@ Error:
     download something, run the program so it gets put away, then download that
     same file and try to run the program again, it will crash.
 
-    modified
 """
 
 
@@ -215,7 +214,7 @@ def change_dir( path, new_suffix ):
     
     downloads   = 'Downloads'
     start_index = 0
-    
+    controller.show_frame(StartPage)
     # Finds the beginning of the portion of the path we want to change.
     for i in range( len( path ) ):
         if path[ i : i + 9 ] == downloads:
@@ -678,21 +677,21 @@ class StartPage( tk.Frame ):
     def __init__( self, parent, controller ):
         tk.Frame.__init__( self,parent )
         
-        tk.Label( self, text = "Directory Cleaner", font=LARGE_FONT ).grid( 
-                  padx = 75 )
+        tk.Label( self, text = "Directory Cleaner", font=LARGE_FONT ).grid( row = 1, padx = 64, pady = 30)
+
 
         # Clean a directory button.
         button = ttk.Button(self                       , 
                             text="Clean a Directory"   ,
                             command = lambda: controller.show_frame( Cleaner_Page ) )
-        button.grid( sticky = 's' )
+        button.grid( row = 5, pady = 3, sticky = 's' )
         button.config( width = 20 )
 
         # View documentation button.
         button2 = ttk.Button(self                      , 
                              text="View Documentation" ,
                              command = lambda: controller.show_frame( Documentation ) )
-        button2.grid( sticky = 's' )
+        button2.grid( row = 6, pady = 3, sticky = 's' )
         button2.config( width = 20 )
 
 
@@ -782,21 +781,35 @@ class Cleaner_Page(tk.Frame):
 
 
 
-
+"""
+Will be the documentation page.
+"""
 class Documentation(tk.Frame):
 
     def __init__( self, parent, controller ):
+        
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Page Two!!!", font=LARGE_FONT)
-        label.pack(pady=10,padx=10)
+        tk.Label(self, text="The purpose of this program is to iterate over the" ).grid( 
+                 row = 1      , 
+                 sticky = 'w' )
+        tk.Label(self, text="files in a directory and place them into folders"   ).grid( 
+                 row = 2      , 
+                 sticky = 'w' )
+        tk.Label(self, text="depending on when they were first downloaded or"    ).grid( 
+                 row = 3      , 
+                 sticky = 'w' )
+        tk.Label(self, text="last altered."                                      ).grid( 
+                 row = 4      , 
+                 sticky = 'w' )
 
-        button1 = tk.Button( self, text="Back to Home",
+
+        button1 = ttk.Button( self, text="Back",
                             command=lambda: controller.show_frame( StartPage ) )
-        button1.pack()
+        button1.grid( pady = 3 )
 
-        button2 = tk.Button( self, text="Page One",
+        button2 = ttk.Button( self, text="To Cleaner",
                             command=lambda: controller.show_frame( Cleaner_Page ) )
-        button2.pack()
+        button2.grid( pady = 3 )
         
 
 
@@ -805,7 +818,9 @@ class Documentation(tk.Frame):
 
 
 
-
+"""
+Init main loop 
+"""
 if __name__ == "__main__":
     app = Dung_Beetle()
     app.mainloop()
