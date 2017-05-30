@@ -73,54 +73,36 @@ on the radiobuttons call 'var.get()'. In here the correct directory path should
 be selcted and the rest of the code will run.
 """
 def execute( var ):
-    if   var.get() == 1:
-        execute_desktop()
-    elif var.get() == 2:
-        execute_documents()
-    elif var.get() == 3:
-        execute_downloads()
-    elif var.get() == 4:
-        execute_music()
-    elif var.get() == 5:
-        execute_pictures()
-    elif var.get() == 6:
-        execute_videos()
-    elif var.get() == 7:
-        execute_desktop()
-        execute_documents()
-        execute_downloads()
-        execute_music()
-        execute_pictures()
-        execute_videos()
-        
-        
-        
-        
-        
-        
-        
-        
-        
-"""
-The following functions handle the file moving operation for a given directory.
-They all follow the same format with minor changes. All except for execute_downloads()
-have an extra line calling change_dir() which changes the path to lead to the 
-correct directory. Downloads doesn't need this because the original path leads 
-to the downloads folder.
-
-var path         - Path to the downloads folder (will be changed on the next 
-                   line in most of the functions).
-var all_in_dir   - A list of files and directories in the parent directory.
-var files_in_dir - all_in_dir appended to remove all directories (leaving just
-                   the files).
- 
-return - None
-"""      
-def execute_desktop():
+    
     # Get path to directory.
     path = get_path()
-    # Alter path to go to correct folder.
-    path = change_dir( path, 'Desktop\\' )
+    
+    try:
+        val = var.get()
+    except AttributeError:
+        val = var
+    
+    # Alter path to go to correct folder if necessary.
+    if   val == 1 :
+        path = change_dir( path, 'Desktop\\' )
+    elif val == 2 :
+        path = change_dir( path, 'Documents\\' )
+    elif val == 3 :
+        pass
+    elif val == 4 :
+        path = change_dir( path, 'Music\\' )
+    elif val == 5 :
+        path = change_dir( path, 'Pictures\\' )
+    elif val == 6 :
+        path = change_dir( path, 'Videos\\' )
+    elif val == 7:
+        execute( 1 )
+        execute( 2 )
+        execute( 3 )
+        execute( 4 )
+        execute( 5 )
+        execute( 6 )
+
     # Get path to all the files / directories in 'Desktop'.
     all_in_dir   = list_objects_in_dir ( path )
     # Remove all the directories from the list.
@@ -130,75 +112,11 @@ def execute_desktop():
     # Move files into respective folders.
     move_files( files_in_dir, path )
     return None
-def execute_documents():
-    # Get path to directory.
-    path = get_path()
-    # Alter path to go to correct folder.
-    path = change_dir( path, 'Documents\\' )
-    # Get path to all the files / directories in 'Documents'.
-    all_in_dir   = list_objects_in_dir ( path )
-    # Remove all the directories from the list.
-    files_in_dir = remove_directories ( all_in_dir ) 
-    # Make new date folders if neccesary.
-    make_date_folders( files_in_dir, path )
-    # Move files into respective folders.
-    move_files( files_in_dir, path )     
-    return None 
-def execute_downloads():
-    # Get path to directory.
-    path = get_path()
-    # Get path to all the files / directories in 'Downloads'.
-    all_in_dir   = list_objects_in_dir ( path )
-    # Remove all the directories from the list.
-    files_in_dir = remove_directories ( all_in_dir ) 
-    # Make new date folders if neccesary.
-    make_date_folders( files_in_dir, path )
-    # Move files into respective folders.
-    move_files( files_in_dir, path )
-    return None
-def execute_music():
-    # Get path to directory.
-    path = get_path()
-    # Alter path to go to correct folder.
-    path = change_dir( path, 'Music\\' )
-    # Get path to all the files / directories in 'Music'.
-    all_in_dir   = list_objects_in_dir ( path )
-    # Remove all the directories from the list.
-    files_in_dir = remove_directories ( all_in_dir ) 
-    # Make new date folders if neccesary.
-    make_date_folders( files_in_dir, path )
-    # Move files into respective folders.
-    move_files( files_in_dir, path )
-    return None
-def execute_pictures():
-    # Get path to directory.
-    path = get_path()
-    # Alter path to go to correct folder.
-    path = change_dir( path, 'Pictures\\' )
-    # Get path to all the files / directories in 'Pictures'.
-    all_in_dir   = list_objects_in_dir ( path )
-    # Remove all the directories from the list.
-    files_in_dir = remove_directories ( all_in_dir ) 
-    # Make new date folders if neccesary.
-    make_date_folders( files_in_dir, path )
-    # Move files into respective folders.
-    move_files( files_in_dir, path )
-    return None
-def execute_videos():
-    # Get path to directory.
-    path = get_path()
-    # Alter path to go to correct folder.
-    path = change_dir( path, 'Videos\\' )
-    # Get path to all the files / directories in 'Videos'.
-    all_in_dir   = list_objects_in_dir ( path )
-    # Remove all the directories from the list.
-    files_in_dir = remove_directories ( all_in_dir ) 
-    # Make new date folders if neccesary.
-    make_date_folders( files_in_dir, path )
-    # Move files into respective folders.
-    move_files( files_in_dir, path )
-    return None
-      
+
+        
+        
+        
+        
         
         
         
@@ -426,6 +344,8 @@ is actually done by renaming them to include the new folder name. The first part
 of the function is a copy paste from make_date_folders, so those variables 
 will come first:
     
+    var file_paths      - Paths to all the files in the directory.
+    var path            - Path to directory.
     var dates_for_files - Dates for all the files in Downloads.
     var years           - Years issolated from dates.
     var months          - Months issolated from dates.
@@ -497,6 +417,24 @@ def move_files( file_paths, path ):
                 index = j + 9
             elif name[ j : j + 7  ] == 'Videos\\'    :
                 index = j + 7
+<<<<<<< HEAD
+=======
+            
+
+#==============================================================================
+#         """
+#         Working solution 
+#         """
+#         if   month_year[i][0:3] == 'Jan':
+#             try:
+#                 os.rename( file_paths[i], path + 'Jan_' + month_year[i][4:] + '\\' + name[index :] )
+#             except FileExistsError:
+#                 # Want to make a window open and ask if they want to re-save with 
+#                 # a changed name, skip, or delete.
+#==============================================================================
+
+
+>>>>>>> processes
 
         # Different case for every month.
         # Jan
