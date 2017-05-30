@@ -214,7 +214,7 @@ def change_dir( path, new_suffix ):
     
     downloads   = 'Downloads'
     start_index = 0
-    controller.show_frame(StartPage)
+
     # Finds the beginning of the portion of the path we want to change.
     for i in range( len( path ) ):
         if path[ i : i + 9 ] == downloads:
@@ -491,103 +491,108 @@ def move_files( file_paths, path ):
                 index = j + 6
             elif name[ j : j + 9  ] == 'Pictures\\' :
                 index = j + 9
-            elif name[ j : j + 6  ] == 'Video\\'    :
-                index = j + 6
-            
-
-#==============================================================================
-#         """
-#         Working solution 
-#         """
-#         if   month_year[i][0:3] == 'Jan':
-#             try:
-#                 os.rename( file_paths[i], path + 'Jan_' + month_year[i][4:] + '\\' + name[index :] )
-#             except FileExistsError:
-#                 # Want to make a window open and ask if they want to re-save with 
-#                 # a changed name, skip, or delete.
-#==============================================================================
-
-
+            elif name[ j : j + 7  ] == 'Videos\\'    :
+                index = j + 7
 
         # Different case for every month.
         # Jan
         if   month_year[i][0:3] == 'Jan':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Jan_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Jan_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Jan_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Feb        
         elif month_year[i][0:3] == 'Feb':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Feb_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Feb_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Feb_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Mar        
         elif month_year[i][0:3] == 'Mar':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Mar_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Mar_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Mar_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Apr        
         elif month_year[i][0:3] == 'Apr':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Apr_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Apr_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Apr_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # May        
         elif month_year[i][0:3] == 'May':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'May_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'May_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'May_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Jun
         elif month_year[i][0:3] == 'Jun':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Jun_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Jun_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Jun_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Jul
         elif month_year[i][0:3] == 'Jul':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Jul_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Jul_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Jul_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Aug
         elif month_year[i][0:3] == 'Aug':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Aug_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Aug_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Aug_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Sep
         elif month_year[i][0:3] == 'Sep':
-            if   month_year[i][4:] == '2016':
-                try:
-                    os.rename( file_paths[i], path + 'Sep_2016\\' + name[index :] )
-                except FileExistsError:
-                    os.rename( file_paths[i], path + 'Sep_2016\\' + 'copy_' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Sep_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Sep_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Oct
         elif month_year[i][0:3] == 'Oct':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Oct_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Oct_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Oct_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Nov
         elif month_year[i][0:3] == 'Nov':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Nov_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Nov_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Nov_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         # Dec
         elif month_year[i][0:3] == 'Dec':
-            if   month_year[i][4:] == '2016':
-                os.rename( file_paths[i], path + 'Dec_2016\\' + name[index :] )
-            elif month_year[i][4:] == '2017':
-                os.rename( file_paths[i], path + 'Dec_2017\\' + name[index :] )
+            try:
+                os.rename( file_paths[i], path + 'Dec_' + month_year[i][4:] + '\\' + name[index :] )
+            except FileExistsError:
+                print( 'error' )
+                # Want to make a window open and ask if they want to re-save with 
+                # a changed name, skip, or delete.
         else: print('Boned in move_files')
         
-    
     return None
 
 
