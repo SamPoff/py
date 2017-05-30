@@ -100,7 +100,6 @@ def execute( var ):
         execute( 5 )
         execute( 6 )
 
-
     # Get path to all the files / directories in 'Desktop'.
     all_in_dir   = list_objects_in_dir ( path )
     # Remove all the directories from the list.
